@@ -13,7 +13,14 @@ The project compares a logistic regression baseline with XGBoost. It decides whe
 
 ## Results
 
-<!-- After training on the real data, replace this comment with the contents of reports/results.md -->
+Test set: the newest 20% of transactions (56,962 transactions, 75 frauds). Alert thresholds were picked on the validation set, assuming each alert costs 5 to review.
+
+| Model | PR-AUC | Fraud caught (recall) | Alerts that were fraud (precision) | Alerts | Fraud amount caught | Losses avoided vs no model |
+|---|---|---|---|---|---|---|
+| Logistic regression | 0.748 | 66.7% (50/75) | 96.2% | 52 | 4,664 of 7,729 | 57.0% |
+| XGBoost | 0.792 | 74.7% (56/75) | 86.2% | 65 | 4,095 of 7,729 | 48.8% |
+
+Logistic regression avoided more fraud losses despite lower recall, because XGBoost missed some higher-value frauds. Most fraud is easy to catch; the last 20% looks like normal payments.
 
 ![Precision vs recall on the newest 20% of transactions](reports/pr_curve.png)
 
@@ -28,8 +35,7 @@ python -m venv .venv
 source .venv/bin/activate          # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 
-python -m fraud.train --openml     # downloads the data (around 150 MB) and trains both models
-# or, with creditcard.csv from Kaggle saved in data/:
+
 python -m fraud.train --data data/creditcard.csv
 
 pytest                             # uses generated data, so it doesn't need the download
