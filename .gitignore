@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# The dataset is large and has its own licence: download it, don't commit it.
+data/
+
+# Trained models are rebuilt by `python -m fraud.train`.
+models/
+
+# Dry runs on fake data.
+reports/dry-run/

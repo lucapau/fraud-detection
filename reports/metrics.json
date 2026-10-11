@@ -1,0 +1,53 @@
+{
+  "review_cost": 5.0,
+  "splits": {
+    "train": {
+      "transactions": 170884,
+      "frauds": 360
+    },
+    "validation": {
+      "transactions": 56961,
+      "frauds": 57
+    },
+    "test": {
+      "transactions": 56962,
+      "frauds": 75
+    }
+  },
+  "results": [
+    {
+      "model": "Logistic regression",
+      "pr_auc": 0.7483956712577765,
+      "roc_auc": 0.9833011642964707,
+      "threshold": 0.9999926458136622,
+      "alerts": 52,
+      "precision": 0.9615384615384616,
+      "recall": 0.6666666666666666,
+      "fraud_caught": 50,
+      "fraud_total": 75,
+      "amount_caught": 4664.290000000001,
+      "amount_missed": 3064.9700000000007,
+      "review_cost_total": 260.0,
+      "total_cost": 3324.9700000000007,
+      "cost_without_model": 7729.26,
+      "cost_saved": 0.569820396777958
+    },
+    {
+      "model": "XGBoost",
+      "pr_auc": 0.7919421354151428,
+      "roc_auc": 0.9826223917591014,
+      "threshold": 0.9379398822784424,
+      "alerts": 65,
+      "precision": 0.8615384615384616,
+      "recall": 0.7466666666666667,
+      "fraud_caught": 56,
+      "fraud_total": 75,
+      "amount_caught": 4094.7200000000003,
+      "amount_missed": 3634.5400000000004,
+      "review_cost_total": 325.0,
+      "total_cost": 3959.5400000000004,
+      "cost_without_model": 7729.26,
+      "cost_saved": 0.4877206873620501
+    }
+  ]
+}
